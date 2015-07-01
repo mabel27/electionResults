@@ -1,0 +1,99 @@
+body{
+background: #012c47;
+  padding-top: 6em;
+}
+
+/* CUSTOMIZE THE CAROUSEL
+-------------------------------------------------- */
+
+/* Carousel base class */
+.carousel {
+  height: 450px;
+  margin-bottom: 10px;
+}
+/* Since positioning the image, we need to help out the caption */
+.carousel-caption {
+  
+  padding-bottom: 10em;
+
+}
+
+/* Declare heights because of positioning of img element */
+.carousel .item {
+  height: 450px;
+  background-color: black;
+}
+
+#other {
+color:dimgrey;
+  background-image: url(../img/Voting_other.png);
+  background-repeat: no-repeat;
+
+}
+#lib 
+{
+color:red;
+   background-image: url(../img/Voting_lib.png);
+  background-repeat: no-repeat;
+
+}
+
+#pc {
+
+  color: blue;
+   background-image: url(../img/Voting_pc.png);
+  background-repeat: no-repeat;
+  
+}
+
+#ndp {
+
+color: orangered;
+ background-image: url(../img/Voting_ndp.png);
+  background-repeat: no-repeat;
+}
+
+#grn {
+
+color: green;
+   background-image: url(../img/Voting_grn.png);
+  background-repeat: no-repeat;
+}
+
+p{
+
+  padding-top: 1em;
+  font-weight: bold;
+  text-align: center;
+  font-size: 16px;
+}
+
+
+h1 {
+
+   background-image: url(../img/vote.jpg);
+  font-weight: bold;
+}
+
+
+#winner {
+ 
+  background-image: url(../img/First_place32.png);
+  background-position:right;
+  background-repeat: no-repeat;
+  color:yellow;
+  
+}
+
+.carousel-control {
+
+background: #012c47;
+
+}
+.carousel-inner  {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  height: 450px;
+}

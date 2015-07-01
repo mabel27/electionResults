@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+<!-- Latest compiled and minified JavaScript -->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-git2.min.js"></script>
+
+<title>Results</title>
+
+<link href="css/style.css" rel="stylesheet">
+
+</head>
+<body>
+  
+  <!-- Carousel   ================================================== -->
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+     
+    <!-- Indicators -->
+
+    <ol class="carousel-indicators" id="indicators">
+    </ol>
+
+    <div class="carousel-inner " role="listbox" id="carouselcontent">
+     
+    </div>
+
+    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+  <!-- /.carousel -->
+  
+  <script>
+    var gNews_getRidingDetailsCallback = function(array) {
+	var active = 'active';      
+	$.each(array, function(index, item) {	
+	if (index == 1) active = '';
+	$('#indicators').append('<li data-target="#myCarousel" data-slide-to="' + index + '" class="' + active + '"></li>');
+      
+      
+        var slider_html = '<div class="item ' + active + '"><div class="container "><div class="carousel-caption"><h1>' + item.name + '</h1>';
+	$.each(item.results, function(index_result, value){
+      
+       if (value.isElected == true)
+      {
+        slider_html += '<p id="winner">Party: ' +value.partyCode+ ' ' + value.name + ' : '  +  value.votes + ' Votes</p>' 
+      
+      }else
+		switch(value.partyCode ){
+          
+        case 'LIB':
+          
+           slider_html += '<p id="lib"> Party: ' +value.partyCode+ ' ' + value.name + ': ' + value.votes + ' Votes</p>'
+          break;
+          
+      case 'PC':
+          
+           slider_html += '<p id="pc">Party:   ' +value.partyCode+ ' ' + value.name + ': ' + value.votes + ' Votes</p>'
+          break;
+          
+        case 'NDP':
+          
+          
+           slider_html += '<p id="ndp">Party:   ' +value.partyCode+ ' ' + value.name + ': ' + value.votes + ' Votes</p>'
+          break;
+          
+           default:
+          
+           slider_html += '<p id="other">Party:  ' +value.partyCode+ ' ' + value.name + ': ' + value.votes + ' Votes</p>'
+          break;
+      }
+       			
+        });
+      
+	slider_html+='</div></div></div>';          
+        $('#carouselcontent').append(slider_html);              
+      });
+        
+    };
+  </script>
+  <script src="http://static.globalnews.ca/content/test/results-2011.js"></script>
+
+</body>
+</html>
