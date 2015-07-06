@@ -52,36 +52,53 @@
 	if (index == 1) active = '';
 	$('#indicators').append('<li data-target="#myCarousel" data-slide-to="' + index + '" class="' + active + '"></li>');
       
-      
         var slider_html = '<div class="item ' + active + '"><div class="container "><div class="carousel-caption"><h1>' + item.name + '</h1>';
+      
 	$.each(item.results, function(index_result, value){
+      
+      // Calculate the total
+      var i = 0;
+      var x = item.results.length;
+      var total = 0;
+      while( i < x)
+      {
+        
+        var total = total + item.results[i].votes ;
+         console.log(total);
+      i++;
+      }
+      
+      // Calculate the %
+      
+     var totalp = ((value.votes / total) * 100).toFixed(2); 
+       
       
        if (value.isElected == true)
       {
-        slider_html += '<p id="winner">Party: ' +value.partyCode+ ' ' + value.name + ' : '  +  value.votes + ' Votes</p>' 
+        slider_html += '<p id="winner">Party: ' +value.partyCode+ ' ' + value.name + ' : '  +  value.votes  + ' Votes' + ' - ' + totalp +' % </p> '
       
       }else
 		switch(value.partyCode ){
           
         case 'LIB':
           
-           slider_html += '<p id="lib"> Party: ' +value.partyCode+ ' ' + value.name + ': ' + value.votes + ' Votes</p>'
+           slider_html += '<p id="lib"> Party: ' +value.partyCode+ ' ' + value.name + ': ' + value.votes + ' Votes' + ' - ' + totalp +' % </p> '
           break;
           
       case 'PC':
           
-           slider_html += '<p id="pc">Party:   ' +value.partyCode+ ' ' + value.name + ': ' + value.votes + ' Votes</p>'
+           slider_html += '<p id="pc">Party:   ' +value.partyCode+ ' ' + value.name + ': ' + value.votes + ' Votes' + ' - ' + totalp +' % </p> '
           break;
           
         case 'NDP':
           
           
-           slider_html += '<p id="ndp">Party:   ' +value.partyCode+ ' ' + value.name + ': ' + value.votes + ' Votes</p>'
+           slider_html += '<p id="ndp">Party:   ' +value.partyCode+ ' ' + value.name + ': ' + value.votes + ' Votes'+ ' - ' + totalp +' % </p> '
           break;
           
            default:
           
-           slider_html += '<p id="other">Party:  ' +value.partyCode+ ' ' + value.name + ': ' + value.votes + ' Votes</p>'
+           slider_html += '<p id="other">Party:  ' +value.partyCode+ ' ' + value.name + ': ' + value.votes + ' Votes' + ' - ' + totalp +' % </p> '
           break;
       }
        			
